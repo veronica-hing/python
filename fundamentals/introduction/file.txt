@@ -1,52 +1,52 @@
-- variable declaration
-- log statement
-- type check
-- length check
-- comment
-    - single line
-    - multiline
+x- variable declaration 
+x- log statement
+x- type check
+x- length check
+x- comment
+ x   - single line
+ x   - multiline
 - Data Types
-    - Primitive
-        - Boolean
-        - Numbers
-        - Strings
+  x  - Primitive
+   x     - Boolean
+   x     - Numbers
+   x     - Strings
     - Composite
-        - List 
-            - initialize
-            - access value
-            - change value
-            - add value
+   x     - List 
+    x        - initialize
+    x        - access value
+    x        - change value
+    x        - add value
+    x        - delete value
+   x     - Tuples
+    x        - initialize
+    x        - access value
+    x        - change value - error statement
+    x        - add value
             - delete value
-        - Tuples
-            - initialize
-            - access value
-            - change value
-            - add value
-            - delete value
-        - Dictionary
-            - initialize
-            - access value
-            - change value
-            - add value
-            - delete value
-- conditional
-    - if
-    - else if
-    - else
-- for loop
-    - start
-    - stop
-    - increment
-    - break
-    - continue
-    - sequence
-- while loop
-    - start
-    - stop
-    - increment
-- function
-    - parameter
-    - argument
+   x     - Dictionary
+     x       - initialize
+     x       - access value
+     x       - change value
+     x       - add value
+     x       - delete value
+x- conditional
+  x  - if
+  x  - else if
+  x  - else
+x- for loop
+  x  - start
+  x  - stop
+  x  - increment
+  x  - break
+  x  - continue
+  x  - sequence
+x- while loop
+  x  - start
+  x  - stop
+  x  - increment
+x- function
+  x  - parameter
+  x  - argument
     - return
 
 * Bonus: Errors
