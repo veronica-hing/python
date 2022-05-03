@@ -1,22 +1,25 @@
+from bank_account import BankAccount
+##importing the class from bank_account file so no copy and pasting
+
 class User:
     def __init__(self, name, email_address):
         self.name = name
         self.email_address = email_address
-        self.account_balance = 0
+        self.account = BankAccount(int_rate=0.02, balance = 0)
 
     def make_deposit(self, amount):
         #increases user's balance by amount specified
-        self.account_balance += amount
+        self.account.deposit(amount)
         return self
 
     def make_withdrawal(self, amount):
         #decrease user's balance by amount specified
-        self.account_balance -= amount
+        self.account.withdraw(amount)
         return self
 
     def display_user_balance(self):
         #prints user name and account balance to terminal
-        print(f"{self.name} {self.account_balance}")
+        self.account.display_account_info()
         return self
         
     def transfer_money(self, other_user, amount):
