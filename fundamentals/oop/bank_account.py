@@ -2,11 +2,12 @@ class BankAccount:
     #class attribute
     all_accounts = []
     # don't forget to add some default values for these parameters!
-    def __init__(self, int_rate = 0.01, balance = 0): 
+    def __init__(self, int_rate = 0.01, balance = 0, acc_type = "checking"): 
         # your code here! (remember, instance attributes go here)
         # don't worry about user info here; we'll involve the User class soon
         self.int_rate = int_rate
         self.balance = balance
+        self.acc_type = acc_type
         BankAccount.all_accounts.append(self)
 
     def deposit(self, amount):
@@ -24,6 +25,7 @@ class BankAccount:
         return self
 
     def display_account_info(self):
+        print(f"Account Type: {self.acc_type}")
         print(f"Balance: {self.balance}")
         return self
     def yield_interest(self):
@@ -38,7 +40,7 @@ class BankAccount:
             account.display_account_info()
 
 ##create the two accounts
-betty = BankAccount(.01,500)
+"""betty = BankAccount(.01,500)
 letty = BankAccount(.02,800)
 
 ##chain 3 deposits and 1 withdrawal then yield then display account info
@@ -48,4 +50,4 @@ betty.deposit(22).deposit(88).deposit(333).withdraw(50).yield_interest().display
 letty.deposit(999).deposit(888).withdraw(22).withdraw(44).withdraw(111).withdraw(93).yield_interest().display_account_info()
 
 print("Calling class method to display all accounts")
-BankAccount.all_balances()
+BankAccount.all_balances()"""
