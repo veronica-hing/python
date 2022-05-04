@@ -26,14 +26,19 @@ player_2_pile = []
 # winner adds cards to their respective points pile
 
 class Player:
-    def __init__(self):
+    def __init__(self, name):
+        self.name = name
         self.deck = []
         self.point_pile = []
         self.card = "temp-card"
     def draw(self):
-        self.card = random.choice(self.deck)
-        self.deck.remove(self.card)
-        return self.card
+        if self.deck:
+            self.card = random.choice(self.deck)
+            self.deck.remove(self.card)
+            return self.card
+        else:
+            print(f"{self.name} has lost")
+            return self
     def win(self, card1, card2):
         self.point_pile.append(card1)
         self.point_pile.append(card2)
@@ -54,10 +59,16 @@ class Game:
         #players compare
         if self.card1.point_val > self.card2.point_val:
             print(f"Player 1 wins this round by beating a {self.card2.string_val} with a {self.card1.string_val}")
-            p1.win(self.card1,self.card2)  
+            p1.win(self.card1,self.card2)
+            #print(len(p1.deck), len(p2.deck))
+        #elif self.card1.point_val == self.card2.point_val:
+            #it's a draw 
+            #print(len(p1.deck), len(p2.deck))
+        #    self.game_round(p1,p2)  
         else:
             print(f"Player 2 wins this round by beating a {self.card1.string_val} with a {self.card2.string_val}")
             p2.win(self.card1,self.card2)
+            #print(len(p1.deck), len(p2.deck))
     
     def play_game(self,p1,p2):
         while p1.deck and p2.deck:
@@ -65,8 +76,8 @@ class Game:
         print(f"player 1 has {len(p1.point_pile)} amount of cards and player 2 has {len(p2.point_pile)} amount of cards")
 
 #we created two players
-thing1 = Player()
-thing2 = Player()
+thing1 = Player("t1")
+thing2 = Player("t2")
 #create our game, war
 war = Game()
 #start the game
