@@ -1,0 +1,32 @@
+<style>
+    *{
+        padding: 0px;
+        margin: 0px;
+    }
+    
+    .box{
+        background-color: {{ color }} ;
+        width: 200px;
+        height: 200px;
+        border: 1px solid burlywood;
+        border-radius: 5px;
+    }
+
+    div.boxes{
+        margin: 2em;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 2em;
+    }
+
+    h1{
+        text-align: center;
+    }
+</style>
+<h1>Welcome!</h1>
+<div class = "boxes">
+{% for x in range(0,times): %}
+    <div class="box"></div>
+{% endfor %}
+</div>
