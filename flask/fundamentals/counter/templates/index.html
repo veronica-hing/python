@@ -1,0 +1,29 @@
+<html lang="en">
+    <head>
+    <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <title>Counter</title>
+    </head>
+    <body>
+        <div class = "row">
+            <div class = "w-50 mx-auto">
+                <h1>Counter</h1>
+                <p class = "m-2">{{session.count}}</p>
+                <div class = "d-flex">
+                    <form action = "/add_two">
+                        <button class = "m-2">Add 2</button>
+                    </form>
+                    <form action="/destroy_session">
+                        <button class = "m-2">Reset</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    <!-- Optional JavaScript -->
+    </body>
+</html>
