@@ -1,0 +1,26 @@
+
+    *{
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .box{
+        width: 100px;
+        height: 100px;
+        border: 1px solid burlywood;
+        border-radius: 5px;
+    }
+    
+    .light{
+        background-color: aquamarine;
+    }
+
+    .dark{
+        background-color: navy;
+    }
+
+    h1{
+        text-align: center;
+        padding: 1em;
+    }
+

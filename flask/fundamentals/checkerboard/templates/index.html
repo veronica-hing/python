@@ -1,0 +1,34 @@
+<link rel = "stylesheet" type=" text/css" href="{{url_for('static', filename='css/style.css') }}">
+<style>
+    div.board{
+    width: {{ 103*width }};
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    }
+</style>
+
+<h1>Welcome!</h1>
+<div class = "board">
+{% for y in range(0, height): %}
+    {# get the odd rows #}
+    {% if y%2: %}
+        {% for x in range(0, width) %}
+            {% if x % 2: %}
+            <div class="box light"></div>
+            {% else %}
+            <div class="box dark"></div>
+            {% endif %}
+        {% endfor %}
+    {% else : %}
+        {% for x in range(0, width) %}
+            {% if x % 2: %}
+            <div class="box dark"></div>
+            {% else %}
+            <div class="box light"></div>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endfor %}
+</div>                                                                               
+
