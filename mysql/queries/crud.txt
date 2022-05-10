@@ -1,0 +1,22 @@
+Create table:
+CREATE TABLE my_table_name (column_name column_type constraints);
+	example:
+	CREATE TABLE student (name Varchar(25) NOT NULL, grade INTEGER)
+
+Read table:
+SELECT * FROM my_table_name;
+	example:
+	SELECT * FROM student;
+
+Update table:
+	** changing the table, like VARCHAR(25) to VARCHAR(45) would look something like:
+		ALTER TABLE student
+		MODIFY name VARCHAR(45) NOT NULL;
+
+	**changing the actual value in a table:
+		UPDATE student SET grade = 100 WHERE name = "derponica";
+Deleting from table:
+DELETE FROM my_table_name WHERE requirements/specifications;
+	example:
+	DELETE FROM student where grade = 100;
+
