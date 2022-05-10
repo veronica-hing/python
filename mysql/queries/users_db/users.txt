@@ -1,0 +1,21 @@
+INSERT INTO users (first_name, last_name, email, created_at, updated_at)
+VALUES ('derponica', 'derpsalot', "derpherp@derpmail.com", NOW(), NOW());
+
+INSERT INTO users (first_name, last_name, email, created_at, updated_at)
+VALUES ('derp', 'merpsalot', "merpherp@derpmail.com", NOW(), NOW()),
+		('babe', 'beautiful', "bestbabe@theblueEgg.com", NOW(), NOW());
+        
+
+SELECT * FROM users;
+
+SELECT * FROM users WHERE email = 'derpherp@derpmail.com' LIMIT 1;
+
+SELECT * FROM users WHERE id = 4;
+
+UPDATE users SET last_name = 'Pancakes' WHERE id = 3;
+
+DELETE FROM users WHERE id = 2;
+
+SELECT * FROM users ORDER BY first_name asc;
+
+SELECT * FROM users ORDER BY first_name desc;
