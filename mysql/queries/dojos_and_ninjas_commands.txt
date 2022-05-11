@@ -1,0 +1,32 @@
+INSERT INTO dojos (name, created_at, updated_at)
+VALUES ('San Jose', NOW(), NOW()),
+	('Portland',NOW(), NOW()),
+    ('Seattle',NOW(), NOW());
+    
+SET SQL_SAFE_UPDATES = 0;
+DELETE FROM dojos;
+
+INSERT INTO dojos (name, created_at, updated_at)
+VALUES ('Denver', NOW(), NOW()),
+('San Diego', NOW(), NOW()),
+('Portland',NOW(), NOW());
+
+INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at, dojo_id)
+VALUES ('derponica', 'derpsalot', 28, NOW(), NOW(), 4),
+('babe', 'beautiful', 32, NOW(), NOW(),4),
+('selene', 'bright', 90, NOW(), NOW(),4);
+
+INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at, dojo_id)
+VALUES ('daisy', 'sherpador', 7, NOW(), NOW(), 5),
+('duke', 'smellington', 9, NOW(), NOW(), 5),
+('kino', 'sabe', 19, NOW(), NOW(), 5);
+
+INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at, dojo_id)
+VALUES ('maisy', 'catador', 7, NOW(), NOW(), 6),
+('snoot', 'bootington', 9, NOW(), NOW(), 6),
+('cray', 'bb', 19, NOW(), NOW(), 6);
+
+SELECT * FROM ninjas WHERE dojo_id = 4;
+SELECT * FROM ninjas WHERE dojo_id = 6;
+
+SELECT * FROM ninjas ORDER BY id desc LIMIT 1;
