@@ -5,9 +5,8 @@ app = Flask(__name__)
 @app.route("/")
 def index():
     # call the get all classmethod to get all friends
-    friends = Friend.get_all()
-    print(friends)
-    return render_template("index.html")
+    users = User.get_all()
+    return render_template("index.html", all_users = users)
             
 if __name__ == "__main__":
     app.run(debug=True)
