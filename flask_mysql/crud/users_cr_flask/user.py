@@ -26,5 +26,31 @@ class User:
     def save(cls, data):
         query = "INSERT INTO users ( first_name, last_name, email, created_at, updated_at ) "
         query = query + "VALUES ( %(fname)s, %(lname)s, %(email)s, NOW(), NOW() );"
+
+        testy = connectToMySQL('users_schema').query_db(query, data)
+        print(testy)
+        return testy
+
+    @classmethod
+    def edit(cls, data):
+        query = "UPDATE users "
+        query = query + "SET first_name = %(first_name)s, last_name = %(last_name)s, email =  %(email)s, updated_at = NOW() "
+        query = query + "WHERE id = %(id)s;"
         return connectToMySQL('users_schema').query_db(query, data)
+
+    @classmethod
+    def delete(cls, id):
+        query = query + "DELETE FROM users WHERE id = %(id)s;"
+        data = {"id": id}
+        return connectToMySQL('users_schema').query_db(query, data)
+
+    @classmethod
+    def get_one(cls, id):
+        query = "SELECT * FROM users WHERE id = %(id)s ;"
+        data = {"id": id}
+        result =  connectToMySQL('users_schema').query_db(query, data)
+        #get the first dictionary from the list
+        result = result[0]
+        user = User(result)
+        return user
             
