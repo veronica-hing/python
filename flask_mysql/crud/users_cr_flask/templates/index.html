@@ -10,13 +10,31 @@
 <body>
     <div class="container">
         <h1>All Users in DB</h1>
-        {% for one_user in all_users %}
-            <p>First Name: {{one_user.first_name}}</p>
-            <p>Last Name: {{one_user.last_name}}</p>
-            <p>Occupation: {{one_user.email}}</p>
-            <hr>
-        {% endfor %}
-        <button class = "btn" href="users/new">Add a new user</button>
+        <table class="table">
+            <thead>
+                <th scope="col">#</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Actions</th>
+            </thead>
+            <tbody>
+                {% for one_user in all_users %}
+                <tr>
+                    <th scope = "row">{{one_user.id}}</th>
+                    <td>{{one_user.first_name}}</td>
+                    <td>{{one_user.last_name}}</td>
+                    <td>{{one_user.email}}</td>
+                    <td>
+                        <a href= {{ '/users/' + one_user.id|string }} >show</a>
+                        <a href={{'/users/' + one_user.id|string + '/edit'}}>edit</a>
+                        <a href={{ '/delete/' + one_user.id|string }} method = "POST">delete</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a class = "btn" href='users/new'>Add a new user</a>
     </div>
         
 </body>
