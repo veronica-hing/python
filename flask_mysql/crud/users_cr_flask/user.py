@@ -40,7 +40,7 @@ class User:
 
     @classmethod
     def delete(cls, id):
-        query = query + "DELETE FROM users WHERE id = %(id)s;"
+        query ="DELETE FROM users WHERE id = %(id)s;"
         data = {"id": id}
         return connectToMySQL('users_schema').query_db(query, data)
 

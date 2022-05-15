@@ -53,7 +53,7 @@ def edit_user(id):
     # We pass the data dictionary into the save method from the Friend class.
     User.edit(data)
     # Don't forget to redirect after saving to the database.
-    return redirect('/users')
+    return redirect('/users/'+ str(id))
 
 @app.route('/delete/<int:id>', methods = ["POST"])
 def delete_user(id):
