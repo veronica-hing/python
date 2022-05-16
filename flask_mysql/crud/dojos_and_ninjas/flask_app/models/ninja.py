@@ -22,3 +22,10 @@ class Ninja:
         for ninja in results:
             ninjas.append( cls(ninja) )
         return ninjas
+
+    @classmethod
+    def save(cls, data):
+        query = "INSERT INTO ninjas (first_name, last_name, age, created_at, updated_at, dojo_id) "
+        query = query + "VALUES (%(first_name)s, %(last_name)s, %(age)s, NOW(), NOW(), %(dojo_id)s) ;"
+        ninja_id = connectToMySQL('dojos_and_ninjas_schema').query_db(query,data)
+        return ninja_id

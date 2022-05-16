@@ -13,13 +13,19 @@
         <div class = "row mt-2" >
             <div class="col">
                 <h1>Add Dojo</h1>
+                <form action="/dojos/save"  method = "POST">
+                    <label for="name" class = "m-2">Name:</label>
+                    <input name = "name" type="text" class="m-2" placeholder="City Name">
+                    <input type="submit" class = "m-2 w-100" value = "Add Dojo">
+                </form>
             </div>
             <div class="col">
                 <h1>All Dojos</h1>
                 {% for one_dojo in dojos %}
-                    <a class = "d-flex w-100" href={{'/dojos/'+ one_dojo.id|string}}>{{one_dojo.name}}</a>
+                    <a class = "d-flex w-80" href={{'/dojos/'+ one_dojo.id|string}}>{{one_dojo.name}}</a>
                 {% endfor %}
             </div>
+            <a href="/ninjas">Add Ninja!</a>
         </div>
         
     </div>
