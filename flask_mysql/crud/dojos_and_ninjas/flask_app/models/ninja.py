@@ -16,9 +16,9 @@ class Ninja:
         query = "SELECT * FROM ninjas;"
         # make sure to call the connectToMySQL function with the schema you are targeting.
         results = connectToMySQL('dojos_and_ninjas_schema').query_db(query)
-        # Create an empty list to append our instances of friends
+        # Create an empty list to append our instances of ninjas
         ninjas = []
-        # Iterate over the db results and create instances of friends with cls.
+        # Iterate over the db results and create instances of ninja with cls.
         for ninja in results:
             ninjas.append( cls(ninja) )
         return ninjas

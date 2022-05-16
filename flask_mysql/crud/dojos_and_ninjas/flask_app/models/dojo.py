@@ -42,6 +42,7 @@ class Dojo:
 
     @classmethod
     def get_dojo_with_ninjas(cls, id):
+        #left join so that even empty dojos have a table shown
         query = "SELECT * FROM dojos LEFT JOIN ninjas ON ninjas.dojo_id = dojos.id WHERE dojos.id = %(id)s ;"
         data = {"id": id}
         results = connectToMySQL('dojos_and_ninjas_schema').query_db(query, data)
