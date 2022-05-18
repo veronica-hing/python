@@ -17,12 +17,12 @@ def register_user():
         session['failed_register'] = True
         return redirect("/")
 
-    password = bcrypt.generate_password_hash(request.form["pw"])
+    password = bcrypt.generate_password_hash(request.form["hashed_pw"])
     data = {
         "first_name": request.form["first_name"],
         "last_name": request.form["last_name"],
         "email": request.form["email"],
-        "pw": password
+        "hashed_pw": password
     }
     user_id = User.save(data)
     user = User.get_by_email({"email": request.form["email"]}) #this gives us a dictionary
@@ -45,7 +45,7 @@ def login_user():
         #the method flashes if not valid
         return redirect("/")
         
-    if not bcrypt.check_password_hash(user["pw"], request.form["pw"]):
+    if not bcrypt.check_password_hash(user["hashed_pw"], request.form["hashed_pw"]):
         session['failed_login'] = True
         flash("Invalid Password")
         return redirect("/")

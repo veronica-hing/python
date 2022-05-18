@@ -10,14 +10,14 @@ class User:
         self.first_name = data["first_name"]
         self.last_name = data["last_name"]
         self.email = data["email"]
-        self.pw = data["pw"]
+        self.hashed_pw = data["hashed_pw"]
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
     
     @classmethod
     def save(cls, data):
-        query = "INSERT INTO users (first_name, last_name, email, pw, created_at, updated_at)"
-        query = query + " VALUES (%(first_name)s, %(last_name)s, %(email)s, %(pw)s, NOW(), NOW());"
+        query = "INSERT INTO users (first_name, last_name, email, hashed_pw, created_at, updated_at)"
+        query = query + " VALUES (%(first_name)s, %(last_name)s, %(email)s, %(hashed_pw)s, NOW(), NOW());"
         user_id = connectToMySQL('login_and_reg').query_db(query, data)
         return user_id
 
@@ -42,8 +42,11 @@ class User:
         if not EMAIL_REGEX.match(user['email']): 
             flash("Invalid email address!")
             is_valid = False
-        if not PASSWORD_REGEX.match(user['pw']): 
+        if not PASSWORD_REGEX.match(user['hashed_pw']): 
             flash("Password needs to be at least 6 characters with lower and capital letters and special characters")
+            is_valid = False
+        if not user['hashed_pw'] == user['confirm_pw']:
+            flash("Please confirm password")
             is_valid = False
         return is_valid
 
