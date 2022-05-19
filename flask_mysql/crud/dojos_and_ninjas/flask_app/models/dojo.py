@@ -47,6 +47,9 @@ class Dojo:
         data = {"id": id}
         results = connectToMySQL('dojos_and_ninjas_schema').query_db(query, data)
         dojo = cls(results[0])
+        #check to see if dojo is empty first before doing extra work
+        if not results[0]["ninjas.id"]:
+            return dojo
         for row_from_db in results:
             ninja_data = {
                 "id": row_from_db["ninjas.id"],
