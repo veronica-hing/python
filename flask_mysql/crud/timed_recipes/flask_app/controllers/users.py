@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, flash
 from flask_app import app, session
 from flask_app.models.user import User
+from flask_app.models.recipe import Recipe
 from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt(app)
@@ -34,7 +35,8 @@ def show_user():
     if session.get("user") is None:
         return redirect("/")
     #render user page
-    return render_template("logged_in.html")
+    recipes = Recipe.get_all()
+    return render_template("dashboard.html", recipes = recipes)
 
 @app.route("/login_user", methods = ["POST"])
 def login_user():
