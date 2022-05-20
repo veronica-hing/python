@@ -48,7 +48,7 @@ function mode(nums) {
         }else{ numsObj[nums[i]]++}
     }//numsObj now has number of instances each key shows up
     
-    let max = 0; //1 since key should show up at least once
+    let max = 0; 
     let otherMaxes = [];//will check before returning, if empty just return key where value is max
     
     for(let key in numsObj){
@@ -71,16 +71,14 @@ function mode(nums) {
     }
     //case for all numbers show up same number of times
     //+1 on othermaxes since the first max is not included
-
     if(nums.length === ((otherMaxes.length + 1) * max)){
         return []
     }
 
     let modeNums = []
-
     for(key in numsObj){
         if(numsObj[key]=== max){
-            modeNums.push(key)
+            modeNums.push(parseInt(key))
         }
     }
     return modeNums
