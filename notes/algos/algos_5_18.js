@@ -57,7 +57,7 @@ console.log(dedupeSorted(nums4))
   the "first" one will be the one with the lowest index.
 */
 
-const nums12 = [3, 5, 4, 3, 4, 6, 5];
+const nums12 = [3, 5,7, 4, 3, 4, 6, 5];
 const expected12 = 6;
 
 const nums22 = [3, 5, 5];
@@ -93,9 +93,10 @@ function firstNonRepeated(nums) {
         else{numsDict[nums[i]] ++}
     }//full dictionary with number as key and how many times it shows up as values
     
-    //going through the dictionary
-    for (let num in numsDict){
+    //going through the dictionary WHICH IS UNORDERED
+    for (let num of nums){
         //finding where it is 1 instance
+        //console.log(num);
         if(numsDict[num] === 1){
             return num;
         }
