@@ -80,18 +80,33 @@ const two_expected6 = 21;
 * @returns {number} The fibonacci number at the given position.
 */
 function fibonacci(num) {
-    //if less than 3, return base case of either 0 or 1
-    if(num === 2) return 1;
+    //if less than 2, return base case of either 0 or 1
     if(num < 2) return num;
     //take the two numbers before it then add them
     return fibonacci(num-2)+fibonacci(num-1)
 }
 
-console.log(fibonacci(two_num1))
-console.log(fibonacci(two_num2))
-console.log(fibonacci(two_num3))
-console.log(fibonacci(two_num4))
-console.log(fibonacci(two_num5))
-console.log(fibonacci(two_num6))
+console.log(fib(two_num1))
+console.log(fib(two_num2))
+console.log(fib(two_num3))
+console.log(fib(two_num4))
+console.log(fib(two_num5))
+console.log(fib(two_num6))
 
+
+function fib(num, numObj= {0:0, 1:1}) {
+    if(numObj.hasOwnProperty(num)){
+        return numObj[num];
+    }else{
+        //if less than 3, return base case of either 0 or 1
+        if(num <0){
+            return null
+        } 
+        if(numObj[num] !== undefined){
+            return numObj[num];
+        }
+    }
+    numObj[num] = fib(num - 1, numObj) + fib(num - 2, numObj)
+    return numObj[num]
+}
 
