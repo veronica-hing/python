@@ -54,8 +54,8 @@ const two_nums2 = [4, 5, 6, 8, 12];
 const two_searchNum2 = 5;
 const two_expected2 = true;
 
-const two_nums3 = [3, 4, 6, 8, 12];
-const two_searchNum3 = 3;
+const two_nums3 = [3, 4, 6, 8, 12,25];
+const two_searchNum3 = 8;
 const two_expected3 = true;
 
 /**
@@ -79,8 +79,8 @@ function binarySearch(sortedNums, searchNum) {
     }else if(sortedNums[midPoint] > searchNum){
         sortedNums= sortedNums.slice(0,midPoint)
         return binarySearch(sortedNums, searchNum)
-    }else{
-        sortedNums= sortedNums.slice(midPoint)
+    }else{//plus one to not recheck the midpoint that we checked on line 77
+        sortedNums= sortedNums.slice(midPoint + 1)
         return binarySearch(sortedNums, searchNum)
     }
 }
