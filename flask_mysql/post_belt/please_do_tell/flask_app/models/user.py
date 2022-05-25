@@ -1,9 +1,8 @@
 from flask_app.config.mysqlconnection import connectToMySQL 
 from flask import flash
-#from flask_app.models import recipe
 import re
 
-DATABASE = 'recipes_erd'
+DATABASE = 'please_do_tell_db'
 EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 PASSWORD_REGEX = re.compile(r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{6,}$') 
 class User:
@@ -16,6 +15,7 @@ class User:
         self.hashed_pw = data["hashed_pw"]
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
+        self.favorites = [] #to be populated when calling get_user_favs
 
     @classmethod
     def save(cls, data):
@@ -68,3 +68,23 @@ class User:
             flash("Invalid email address!")
             is_valid = False
         return is_valid
+
+    @classmethod
+    def add_to_favorites(cls, data):
+        query = "INSERT INTO favorites (user_id, api_cocktail_id)"
+        query = query + "VALUES (%(user_id)s, %(api_cocktail_id)s)"
+        favorite_id = connectToMySQL(DATABASE).query_db(query, data)
+        return favorite_id
+
+    @classmethod
+    def add_to_favorites(cls, data):
+        query = "INSERT INTO favorites (user_id, api_cocktail_id, cocktail_name)"
+        query = query + "VALUES (%(user_id)s, %(api_cocktail_id)s, %(cocktail_name)s)"
+        favorite_id = connectToMySQL(DATABASE).query_db(query, data)
+        return favorite_id
+
+    @classmethod
+    def get_user_favs(cls, data):
+        query = "SELECT * FROM favorites WHERE user_id = %(id)s;"
+        results = connectToMySQL(DATABASE).query_db(query, data)
+        return results

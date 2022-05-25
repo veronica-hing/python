@@ -13,24 +13,22 @@
         <a href="/">Please Do Tell</a>
         <a href="/login">Log In</a>
     </nav>
-    <div class="container d-flex">
-        <div class = "col-4">
-            <img src={{cocktail.thumb}} alt={{cocktail.name}}>
-            <h1>{{cocktail.name}}</h1>
+    <div class="container d-flex cocktail-card">
+        <div class="col-4">
+            <img class = "cocktail-img" src="#" alt="#">
+            <h1 class = "cocktail-name"></h1>
+            <a href="#" class = "favorited">Add to Favorites</a>
         </div>
-        <div class = "col-4 mt-2" >
-            <p>INGREDIENTS:</p>
-                <ul>
-                    {% for ingredient,meas in cocktail.ingredients, cocktail.ing_meas %}
-                    <li> {{ meas }} - {{ ingredient }}</li>
-                    {% endfor %}
-                </ul>
-            <p>METHOD:</p>
-            <p>{{ cocktail.instructions }}</p>
-            <p>VESSEL:</p>
-            <p>{{ cocktail.glass }}</p>
-
+        <div class="col-4 cocktail-deets">
+            <h1>INGREDIENTS:</h1>
+            <ul class = "ing-list"></ul>
+            <h1>METHOD:</h1>
+            <p class = "instructions"></p>
+            <h1>VESSEL:</h1>
+            <p class = "glass-ware"></p>
         </div>
+    </div>
+    <script src="/static/js/api_cocktail_details.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>  
 </body>
 </html>

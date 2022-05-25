@@ -1,7 +1,7 @@
 from flask_app.config.mysqlconnection import connectToMySQL 
 from flask import flash
 
-DATABASE = 'pdt_erd'
+DATABASE = 'please_do_tell_db'
 
 class Cocktail:
     def __init__(self, data):
@@ -45,7 +45,7 @@ class Cocktail:
             cocktail_data = {
                 "id" : row["idDrink"],
                 "name" : row["strDrink"],
-                "thumb" : row["StrDrinkThumb"],
+                "thumb" : f'{row["StrDrinkThumb"]}/preview',
                 "glass" : row["StrGlass"],
                 "ingredients" : ingredients_arr, #formatted in above for loop
                 "instructions" : row["instructions"],
@@ -55,9 +55,9 @@ class Cocktail:
                 "users_id" : row["id"], #user id of the favorite list we're getting    
             }
             cocktails.append( cls(cocktail_data) )
-        return recipes
+        return cocktails
 
-    # @classmethod probably call directly from controller since interacting with API
+    # @classmethod #probably call directly from controller since interacting with API
     # def get_one(cls, data):
     #     query = "SELECT * FROM recipes WHERE id = %(id)s;"
     #     # make sure to call the connectToMySQL function with the schema you are targeting.

@@ -10,10 +10,11 @@
 </head>
 <body>
     <div class="container">
-        <div class = "d-flex justify-content-around">
-            <h1 class = "text-center">Welcome Back {{session["user"]["user_name"]}}</h1>
-            <a class = "btn btn-success mt-4" href = "/logout">Logout</a>
-        </div>
+        <nav class = "d-flex justify-content-between">
+            <a href="/">Please Do Tell</a>
+            <a href="/logout">Log Out</a>
+        </nav>
+        <h1 class = "text-center">Welcome Back {{session["user"]["user_name"]}}</h1>
         <form action="/cocktails/search">
             <input type="text" default = "search for a cocktail name">
 
@@ -27,10 +28,10 @@
                 </tr>
             </thead>
             <tbody>
-                {% for recipe in recipes %}
+                {% for cocktail in cocktails %}
                 <tr>
-                    <td>{{cocktail.name}}</td>
-                    <td><a href = "/cocktails/{{cocktail.id}}">View Details</a></td>
+                    <td>{{cocktail['cocktail_name']}}</td>
+                    <td><a href = "/cocktails/{{cocktail['api_cocktail_id']}}">View Details</a></td>
                 </tr>
                 {% endfor %}
             </tbody>

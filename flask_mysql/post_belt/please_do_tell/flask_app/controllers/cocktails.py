@@ -25,8 +25,11 @@ from flask_app.models.cocktail import Cocktail
 def cocktail_show(id):
     #submit the cocktail to the server and get id
     data = {"id": id}
-    cocktail = Cocktail.get_one(data) #this is an obj
-    return render_template("cocktail_details.html", cocktail = cocktail)
+    # cocktail = Cocktail.get_one(data) #this is an obj
+    # if cocktail is not False:
+    #     return render_template("cocktail_details.html", cocktail = cocktail)
+    # else:
+    return render_template("api_cocktail_details.html")
 
 # @app.route("/cocktails/edit/<int:id>")
 # def cocktail_edit(id):
