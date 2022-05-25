@@ -1,16 +1,15 @@
 from flask import render_template, request, redirect, flash
 from flask_app import app, session
 from flask_app.models.user import User
-from flask_app.models.recipe import Cocktail
+from flask_app.models.cocktail import Cocktail
 from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt(app)
 
 @app.route("/")
 def index():
-    return redirect("/login")
     #render the cocktails slideshow
-    #return render_template("index.html")
+    return render_template("landing.html")
 
 @app.route("/login")
 def login():

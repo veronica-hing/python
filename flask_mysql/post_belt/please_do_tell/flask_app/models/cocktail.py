@@ -2,8 +2,8 @@ from flask_app.config.mysqlconnection import connectToMySQL
 from flask import flash
 
 DATABASE = 'pdt_erd'
- 
-class Recipe:
+
+class Cocktail:
     def __init__(self, data):
         self.id = data["idDrink"]
         self.name = data["strDrink"]
@@ -36,23 +36,23 @@ class Recipe:
             ingredients_arr = []#list of ingredients since in API keys for each ingredient is formatted strIngredient1...15
             meas_arr = []#same as above but for strMeasure1...15
             for i in range(1,16):
-                if(row[f'strIngredient{i}'] is 'null'):
+                if(row[f'strIngredient{i}'] == 'null'):
                     break
                 else:
                     ingredients_arr.push(row[f'strIngredient{i}'])
                     meas_arr.push(row[f'strMeasure{i}'])
             ##both ingredients_arr and meas_arr are populated now
             cocktail_data = {
-                "id" = row["idDrink"],
-                "name" = row["strDrink"],
-                "thumb" = row["StrDrinkThumb"],
-                "glass" = row["StrGlass"],
-                "ingredients" = ingredients_arr, #formatted in above for loop
-                "instructions" = row["instructions"],
-                "ing_meas" = meas_arr, #formatted like self.ingredients
-                "created_at" = row["created_at"], # maybe used when user can create recipe
-                "updated_at" = row["updated_at"], # maybe used when user can create recipe 
-                "users_id" = row["id"], #user id of the favorite list we're getting    
+                "id" : row["idDrink"],
+                "name" : row["strDrink"],
+                "thumb" : row["StrDrinkThumb"],
+                "glass" : row["StrGlass"],
+                "ingredients" : ingredients_arr, #formatted in above for loop
+                "instructions" : row["instructions"],
+                "ing_meas" : meas_arr, #formatted like self.ingredients
+                "created_at" : row["created_at"], # maybe used when user can create recipe
+                "updated_at" : row["updated_at"], # maybe used when user can create recipe 
+                "users_id" : row["id"], #user id of the favorite list we're getting    
             }
             cocktails.append( cls(cocktail_data) )
         return recipes
