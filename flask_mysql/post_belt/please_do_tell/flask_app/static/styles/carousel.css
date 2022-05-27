@@ -1,16 +1,26 @@
 * {
-    box-sizing: border-box
+    box-sizing: border-box;
 }
 
-img{
-    width: 50vw;
-    height: auto;
+.title{
+    width: 33vw;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-size: 1cm;
+    padding-top: 6em;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    background-image: linear-gradient(rgba(0,0,0,0), black);
 }
 /* Slideshow container */
 .slideshow-container {
-    max-width: 500px;
+    width: 33vw;
     position: relative;
+    margin-top: 10vh;
     margin: auto;
+    overflow: hidden;
+    border: 2px solid #E02B20
 }
 
 /* Hide the images by default */

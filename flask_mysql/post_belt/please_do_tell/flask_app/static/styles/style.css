@@ -1,0 +1,55 @@
+* {
+    box-sizing: border-box;
+    color: white;
+}
+
+body{
+    background-color: black;
+}
+nav{
+    background-color: rgb(15, 15, 15);
+    margin-bottom: 8vh;
+}
+
+a {
+    text-decoration: none;
+    font-weight: bolder;
+    font-size: larger;
+    color: white;
+    margin: 1em;
+}
+
+a:hover{
+    color:#E02B20;
+}
+img{
+    width: 33vw;
+    height: auto;
+}
+
+.img-footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 33vw;
+    padding: 1em;
+}
+
+.cocktail-deets{
+    padding: 1em;
+    margin-left: 5vw;
+}
+
+button{
+    background-color: black;
+    border: 2px solid #E02B20;
+    margin: .5em;
+}
+
+input{
+    background-color: rgb(15, 15, 15);
+}
+
+.search_cocktail{
+    margin: 1em;
+}
