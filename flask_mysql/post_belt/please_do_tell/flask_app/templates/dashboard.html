@@ -15,11 +15,11 @@
             <a href="/logout">Log Out</a>
         </nav>
         <h1 class = "text-center">Welcome Back {{session["user"]["user_name"]}}</h1>
-        <form action="/cocktails/search">
-            <input type="text" default = "search for a cocktail name">
-
+        <form>
+            <input type="text" default = "search for a cocktail name" name = "search_cocktail" class = "search_cocktail">
+            <button type = "submit" onclick = "getDrink()" >Search Drinks</button>
         </form>
-        <h2>Favorites maybe?</h2>
+        <h2>Your Favorites</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -31,12 +31,36 @@
                 {% for cocktail in cocktails %}
                 <tr>
                     <td>{{cocktail['cocktail_name']}}</td>
-                    <td><a href = "/cocktails/{{cocktail['api_cocktail_id']}}">View Details</a></td>
+                    <td>
+                        <a href = "/cocktails/{{cocktail['api_cocktail_id']}}">View Details</a>
+                        <a href="/favorites/remove/{{cocktail['api_cocktail_id']}}">Remove</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <h2>Your Friends</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope = "col">Name</th>
+                    <th scope = "col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for friend in friends %}
+                <tr>
+                    <td>{{friend['user_name']}}</td>
+                    <td>
+                        <a href = "/cocktails/{{cocktail['api_cocktail_id']}}">View Details</a>
+                        <a href="/favorites/remove/{{cocktail['api_cocktail_id']}}">Remove</a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
     </div>
+    <script src = "/static/js/dashboard.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>  
 </body>
 </html>

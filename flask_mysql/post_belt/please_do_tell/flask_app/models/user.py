@@ -70,11 +70,9 @@ class User:
         return is_valid
 
     @classmethod
-    def add_to_favorites(cls, data):
-        query = "INSERT INTO favorites (user_id, api_cocktail_id)"
-        query = query + "VALUES (%(user_id)s, %(api_cocktail_id)s)"
-        favorite_id = connectToMySQL(DATABASE).query_db(query, data)
-        return favorite_id
+    def remove_from_favorites(cls, data):
+        query = "DELETE FROM favorites WHERE user_id = %(user_id)s AND api_cocktail_id = %(api_cocktail_id)s ;"
+        return connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod
     def add_to_favorites(cls, data):

@@ -1,6 +1,7 @@
 from flask import render_template, request, redirect, flash
 from flask_app import app, session
 from flask_app.models.cocktail import Cocktail
+import requests
 
 # @app.route("/cocktails/new")
 # def cocktail_form():
@@ -20,6 +21,19 @@ from flask_app.models.cocktail import Cocktail
 #     }
 #     cocktail_id = Cocktail.save(data)
 #     return redirect("/cocktails/"+ str(cocktail_id))
+
+@app.route("/cocktails/search", methods = ["POST"])
+def cocktail_search():
+    cocktail_name = request.form["cocktail_name"]
+    #reformat the cocktail name to have '_' instead of ' '
+    cocktail_name = cocktail_name.replace(" ","_")
+    print(cocktail_name)
+    params = {'s' : cocktail_name}
+    url = "https://www.thecocktaildb.com/api/json/v1/1/search.php"
+    res = requests.get(url = url, params = params)
+    if res is Null:
+        return redirect("/dashboard/")
+    print(res)
 
 @app.route("/cocktails/<int:id>")
 def cocktail_show(id):

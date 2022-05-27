@@ -63,7 +63,7 @@ def login_user():
         #the method flashes if not valid
         return redirect("/login")
         
-    if not bcrypt.check_password_hash(user.hashed_pw, request.form["hashed_pw"]):
+    if not bcrypt.check_password_hash(user["hashed_pw"] , request.form["hashed_pw"]):
         session['failed_login'] = True
         flash("Invalid Password")
         return redirect("/login")
@@ -88,4 +88,16 @@ def add_to_user_favorites(drink_id, drink_name):
         "cocktail_name": drink_name
     }
     User.add_to_favorites(data)
+    return redirect("/dashboard/")
+
+@app.route("/favorites/remove/<int:drink_id>/")
+def remove_from_favorites(drink_id):
+    user = session.get("user")
+    if user is None:
+        return redirect("/login")
+    data = {
+        "user_id": user["id"],
+        "api_cocktail_id": drink_id,
+    }
+    User.remove_from_favorites(data)
     return redirect("/dashboard/")
