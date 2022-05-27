@@ -12,15 +12,15 @@
     <div class="container">
         <nav class = "d-flex justify-content-between">
             <a href="/">Please Do Tell</a>
+            <a href="/dashboard/">Dashboard</a>
             <a href="/logout">Log Out</a>
         </nav>
-        <h1 class = "text-center">Welcome Back {{session["user"]["user_name"]}}</h1>
         <!-- <form> -->
             <input type="text" default = "search for a cocktail name" name = "search_cocktail" class = "search_cocktail">
             <button type = "submit" onclick = "onSearchDrink()" >Search Drinks</button>
             <button type = "submit" onclick = "onSearchFriend()" >Find Friend by Username</button>
         <!-- </form> -->
-        <h2>Your Favorites</h2>
+        <h2>{{ friend["user_name"] }}'s Favorites</h2>
         <table class="table">
             <thead>
                 <tr>
@@ -34,27 +34,6 @@
                     <td>{{cocktail['cocktail_name']}}</td>
                     <td>
                         <a href = "/cocktails/{{cocktail['api_cocktail_id']}}">View Details</a>
-                        <a href="/favorites/remove/{{cocktail['api_cocktail_id']}}">Remove</a>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-        <h2>Your Friends</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope = "col">Name</th>
-                    <th scope = "col">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for friend in friends %}
-                <tr>
-                    <td>{{friend['user_name']}}</td>
-                    <td>
-                        <a href = "/cocktails/{{cocktail['api_cocktail_id']}}">View Details</a>
-                        <a href="/favorites/remove/{{cocktail['api_cocktail_id']}}">Remove</a>
                     </td>
                 </tr>
                 {% endfor %}

@@ -52,6 +52,19 @@ def show_user():
     cocktails = User.get_user_favs(data)
     return render_template("dashboard.html", cocktails = cocktails)
 
+@app.route("/friends/search/<user_name>")
+def show_other_user(user_name):
+    if session.get("user") is None:
+        return redirect("/")
+    #render user page
+    data = {"user_name" : user_name}
+    friend = User.find_by_user_name(data)
+    drinks_data = {"id": friend["id"]}
+    cocktails = User.get_user_favs(drinks_data)
+    if friend is False:
+        return redirect("/dashboard/")
+    return render_template("profile.html", friend = friend, cocktails = cocktails)
+
 @app.route("/login_user", methods = ["POST"])
 def login_user():
     #render the registration and login form
